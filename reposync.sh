@@ -5,6 +5,14 @@ pull=$(git pull)
 	if [[ $pull == "Already up to date." ]]
 	then
 	echo "Minden naprakész!"
+		dockeron=$(docker ps | grep -i "frontend")
+		if [[ -z $dockeron ]]
+		then
+		cd ~/docker-miniapp
+		docker compose up --build -d
+		else
+		echo "A konténerek már futnak!"
+		fi
 	else
 	cd ~/docker-miniapp
 	docker compose down
