@@ -13,7 +13,7 @@ services:
   backend1:
     build: ./server
     ports:
-    - "3002:3000"
+    - "${BACKEND1_PUBLISHED_PORT}:3000"
     networks:
     - pm-buli-network
     volumes:
@@ -22,7 +22,7 @@ services:
   backend2:
     build: ./server2
     ports:
-    - "3001:3000"
+    - "${BACKEND2_PUBLISHED_PORT}:3000"
     networks:
     - pm-buli-network
     volumes:
@@ -31,7 +31,7 @@ services:
   loadbalancer:
     build: ./loadbalance
     ports:
-    - "3000:80"
+    - "${LOADBALANCER_PUBLISHED_PORT}:80"
     networks:
     - pm-buli-network
 
