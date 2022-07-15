@@ -8,11 +8,11 @@ pull=$(git pull)
 	else
 	cd ~/docker-miniapp
 	docker compose down
-	docker compose up
+	docker-compose up --build -d
 	fi
 else
 cd ~
 git clone https://github.com/Ellenszenves/docker-miniapp.git
 cd ~/docker-miniapp
-docker compose up
+docker-compose up --build -d
 fi
