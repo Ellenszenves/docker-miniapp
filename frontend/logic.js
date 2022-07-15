@@ -1,4 +1,4 @@
-const url = "http://192.168.0.220:3000";
+const url = "http://miniapp.duckdns.org:3000";
 
 
 //--------- multiple select ---------
