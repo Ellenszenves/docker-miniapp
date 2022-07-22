@@ -1,27 +1,27 @@
 #!/bin/bash
-if [[ -d "~/workspace/repo-sync" ]]
+if [ -d ~/docker-miniapp ]
 then
-cd ~/workspace/repo-sync
+cd ~/docker-miniapp
 pull=$(git pull)
-	if [[ $pull == "Already up to date." ]]
+	if [ "$pull" = "Already up to date." ]
 	then
 	echo "Minden naprakész!"
 		dockeron=$(docker ps | grep -i "frontend")
-		if [[ -z $dockeron ]]
+		if [ -z "$dockeron" ]
 		then
-		cd ~/workspace/repo-sync
+		cd ~/docker-miniapp
 		docker compose up --build -d
 		else
 		echo "A konténerek már futnak!"
 		fi
 	else
-	cd ~/workspace/repo-sync
+	cd ~/docker-miniapp
 	docker compose down
 	docker compose up --build -d
 	fi
 else
-cd ~/workspace
+cd ~/
 git clone https://github.com/Ellenszenves/docker-miniapp.git
-cd ~/workspace/docker-miniapp
+cd ~/docker-miniapp
 docker compose up --build -d
 fi
